@@ -20,11 +20,12 @@ class Api {
       .then(this._checkResponse);
   }
 
-  getUserInfo() {
+  getUserInfo(user) {
     return this._request(`${this.baseUrl}/users/me`, {
       method: 'GET',
       credentials: 'include',
-      headers: this.headers
+      headers: this.headers,
+      body: JSON.stringify(user)
     });
   }
 
