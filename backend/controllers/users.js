@@ -87,9 +87,8 @@ module.exports.login = async (req, res, next) => {
       throw new UnauthorizedError('Неправильная почта или пароль');
     }
     const token = generateToken({ id: user._id });
+    res.cookie('mestoToken', token, { maxAge: 7 * 24 * 60 * 60 * 1000, httpOnly: true, sameSite: true });
     return res.status(200).send({ token });
-    // res.cookie('mestoToken', token, { maxAge: 3600000000, httpOnly: true, sameSite: true });
-    // return res.status(200).send({ email, id: user._id });
   } catch (error) {
     return next(error);
   }

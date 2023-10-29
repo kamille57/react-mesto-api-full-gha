@@ -150,7 +150,7 @@ function App() {
     }
 
     function checkContent() {
-        const token = localStorage.getItem('token');
+        const token = localStorage.getItem('mestoToken');
         if (token) {
             auth.checkToken(token)
                 .then((res) => {
@@ -159,13 +159,14 @@ function App() {
                     navigate("/");
                 })
                 .catch(err => console.log(err));
+                localStorage.removeItem('mestoToken');
         }
     }
 
     function handleLogin(email, password) {
         auth.authorize(email, password)
             .then(res => {
-                localStorage.setItem('token', res.token);
+                localStorage.setItem('mestoToken', res.token);
                 navigate("/");
                 checkContent();
             })

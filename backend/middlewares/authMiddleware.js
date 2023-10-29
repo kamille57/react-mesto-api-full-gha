@@ -4,12 +4,12 @@ const { UnauthorizedError } = require('../errors/UnauthorizedError');
 const authMiddleware = async (req, res, next) => {
   let payload;
   try {
-    // const token = req.cookies.mestoToken;
-    const { authorization } = req.headers;
-    if (!authorization.startsWith('Bearer')) {
-      throw new UnauthorizedError('Токен не получен');
-    }
-    const token = authorization.split('Bearer ')[1];
+    const token = req.cookies.jwt;
+    // const { authorization } = req.headers;
+    // if (!authorization.startsWith('Bearer')) {
+    //   throw new UnauthorizedError('Токен не получен');
+    // }
+    // const token = authorization.split('Bearer ')[1];
 
     if (!token) {
       throw new UnauthorizedError('Токен не получен');

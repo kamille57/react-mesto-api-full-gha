@@ -1,9 +1,9 @@
 class Api {
   constructor() {
     this.baseUrl = 'http://localhost:3000';
-    const token = localStorage.getItem('token');
+    // const token = localStorage.getItem('jwt');
     this.headers = {
-      "Authorization": `Bearer ${token}`,
+      // "Authorization": `Bearer ${token}`,
       'Content-Type': 'application/json'
     };
   }
@@ -23,6 +23,7 @@ class Api {
   getUserInfo() {
     return this._request(`${this.baseUrl}/users/me`, {
       method: 'GET',
+      credentials: 'include',
       headers: this.headers
     });
   }
@@ -30,6 +31,7 @@ class Api {
   setUserInfo(user) {
     return this._request(`${this.baseUrl}/users/me`, {
       method: 'PATCH',
+      credentials: 'include',
       headers: this.headers,
       body: JSON.stringify({
         name: user.name,
@@ -41,6 +43,7 @@ class Api {
   updateAvatar(avatar) {
     return this._request(`${this.baseUrl}/users/me/avatar`, {
       method: 'PATCH',
+      credentials: 'include',
       headers: this.headers,
       body: JSON.stringify({
         avatar: avatar
@@ -51,6 +54,7 @@ class Api {
   getInitialCards() {
     return this._request(`${this.baseUrl}/cards`, {
       method: 'GET',
+      credentials: 'include',
       headers: this.headers
     });
   }
@@ -58,6 +62,7 @@ class Api {
   addCard(data) {
     return this._request(`${this.baseUrl}/cards`, {
       method: 'POST',
+      credentials: 'include',
       headers: this.headers,
       body: JSON.stringify(data)
     });
@@ -66,6 +71,7 @@ class Api {
   deleteCard(cardId) {
     return this._request(`${this.baseUrl}/cards/${cardId}`, {
       method: 'DELETE',
+      credentials: 'include',
       headers: this.headers
     });
   }
@@ -73,6 +79,7 @@ class Api {
   likeCard(cardId) {
     return this._request(`${this.baseUrl}/cards/${cardId}/likes`, {
       method: 'PUT',
+      credentials: 'include',
       headers: this.headers
     });
   }
@@ -80,6 +87,7 @@ class Api {
   dislikeCard(cardId) {
     return this._request(`${this.baseUrl}/cards/${cardId}/likes`, {
       method: 'DELETE',
+      credentials: 'include',
       headers: this.headers
     });
   }
@@ -87,6 +95,7 @@ class Api {
   changeLikeCardStatus(cardId, like) {
     return this._request(`${this.baseUrl}/cards/${cardId}/likes`, {
       method: like ? 'PUT' : 'DELETE',
+      credentials: 'include',
       headers: this.headers
     });
   }
