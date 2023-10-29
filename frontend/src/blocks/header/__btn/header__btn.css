@@ -1,0 +1,10 @@
+.header__btn {
+    margin: 0;
+    text-decoration: none;
+    color: #A9A9A9;
+    font-family: Inter;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 22px;
+}

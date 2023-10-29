@@ -1,0 +1,6 @@
+.popup-form__save-button_invalid {
+  border: 0;
+  cursor: pointer;
+  color: rgb(0, 0, 0, .2);
+  background-color: white;
+}

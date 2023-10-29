@@ -1,0 +1,31 @@
+.profile-info__name {
+  margin: 0 0 0 30px;
+  padding: 0;
+  font-family: 'Inter', 'Helvetica Neue', 'Arial', sans-serif;
+  line-height: 48px;
+  font-size: 42px;
+  font-weight: 500;
+  color: #FFF;
+  grid-area: name;
+  align-self: flex-end;
+  justify-self: center;
+  text-overflow: ellipsis;
+  max-width: 400px;
+  overflow: hidden;
+  white-space: nowrap; 
+}
+
+@media screen and (max-width: 620px) {
+  .profile-info__name {
+    justify-self: end;
+  }
+}
+
+@media screen and (max-width: 920px) {
+  .profile-info__name {
+    margin-top: 26px;
+    line-height: 33px;
+    font-size: 27px;
+    max-width: 250px;
+  }
+}

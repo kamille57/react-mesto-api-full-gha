@@ -1,0 +1,18 @@
+.auth__form {
+    margin: 0 auto;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    height: 100%;
+    width: 358px;
+}
+
+@media screen and (max-width: 620px) {
+    .auth__form {
+        width: 260px;
+        padding: 25px 22px 0;
+    }
+}

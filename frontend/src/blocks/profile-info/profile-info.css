@@ -1,0 +1,23 @@
+.profile-info {
+  margin: 0 auto;
+  padding: 40px 0 0;
+  display: grid;
+  grid-template-columns: min-content max-content min-content auto;
+  grid-template-rows: repeat(2, min-content);
+  grid-template-areas:
+   "avatar name edit add"
+   "avatar hobby . add";
+}
+
+@media screen and (max-width: 620px) {
+  .profile-info {
+    padding: 42px 0 0;
+    justify-content: center;
+    align-items: center;
+    grid-template-areas:
+      "avatar avatar"
+      "name edit"
+      "hobby hobby"
+      "add add";
+  }
+}

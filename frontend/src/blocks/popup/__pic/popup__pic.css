@@ -1,0 +1,7 @@
+.popup__pic {
+  place-self: center;
+  max-width: 75vw;
+  max-height: 75vh;
+  object-fit: cover;
+  box-sizing: border-box;  
+}

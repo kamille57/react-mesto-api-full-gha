@@ -1,0 +1,6 @@
+.element__caption {
+    margin: 25px 15px 31px 21px;
+    display: grid;
+    grid-template-areas:
+        "title like"
+}

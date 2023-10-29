@@ -1,0 +1,8 @@
+.element__counter {
+    margin: auto;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 400;
+    justify-self: center;
+    grid-area: counter;
+}

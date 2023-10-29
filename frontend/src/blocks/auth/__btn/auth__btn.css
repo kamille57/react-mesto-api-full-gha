@@ -1,0 +1,25 @@
+.auth__btn {
+    margin: 216px auto 0;
+    padding: 0;
+    width: 358px;
+    height: 50px;
+    border-radius: 2px;
+    font-family: 'Inter', 'Helvetica Neue', 'Arial', sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    background-color: #fff;
+    cursor: pointer;
+}
+
+
+@media screen and (max-width: 620px) {
+    .auth__btn {
+      line-height: 17px;
+      font-size: 14px;
+      width: 260px;
+      margin: 15px;
+      height: 46px;
+    }
+  }

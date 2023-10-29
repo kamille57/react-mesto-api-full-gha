@@ -1,0 +1,12 @@
+.element__like-counter {
+    margin: 0;
+    width: 22px;
+    display: grid;
+    grid-area: like;
+    grid-template-areas: 
+    "like"
+    "counter";
+    align-self: center;
+    justify-self: end;
+
+}

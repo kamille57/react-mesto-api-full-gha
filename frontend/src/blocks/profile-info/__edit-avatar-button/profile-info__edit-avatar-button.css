@@ -1,0 +1,21 @@
+.profile-info__edit-avatar-button {
+    padding: 0;
+    width: 120px;
+    height: 120px;
+    grid-area: avatar;
+    background-image: url(../../../images/PencilIMG.svg);
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+    opacity: 0%;
+    outline: none;
+    border: none;
+    align-self: center;
+    justify-self: center;
+}
+
+.profile-info__edit-avatar-button:hover {
+    opacity: 100%;
+    transition: 1s;
+}

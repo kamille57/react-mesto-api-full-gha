@@ -1,0 +1,11 @@
+.popup-form__save-button_valid {
+  border: 0;
+  cursor: pointer;
+  color: white;
+  background-color: #000;
+}
+
+.popup-form__save-button:hover {
+    opacity: 80%;
+    transition: 2s;
+  }

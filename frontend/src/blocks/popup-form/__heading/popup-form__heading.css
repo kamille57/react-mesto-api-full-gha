@@ -1,0 +1,16 @@
+.popup-form__heading {
+  font-family: 'Inter', 'Helvetica Neue', 'Arial', sans-serif;
+  margin: 0 0 54px;
+  line-height: 29px;
+  font-size: 24px;
+  font-weight: 900;
+  text-align: center;
+}
+
+@media screen and (max-width: 620px) {
+  .popup-form__heading {
+    line-height: 22px;
+    font-size: 18px;
+    margin: 0 0 44px;
+  }
+}
