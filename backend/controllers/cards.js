@@ -12,7 +12,7 @@ module.exports.getCards = async (req, res, next) => {
     if (!cards) {
       throw new NotFoundError('Карточки не найдены');
     }
-    res.status(200).send(cards);
+    res.status(200).send({ data: cards });
   } catch (error) {
     next(error);
   }

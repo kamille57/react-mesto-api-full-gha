@@ -37,13 +37,18 @@ function App() {
     }, []);
 
     useEffect(() => {
-        Promise.all([api.getUserInfo(), api.getInitialCards()])
-            .then(([userData, cardsData]) => {
-                setCurrentUser(userData);
-                setCards(cardsData);
-            })
-            .catch(console.error);
-    }, []);
+        api.getUserInfo()
+          .then(userData => {
+            setCurrentUser(userData.data);
+          })
+          .catch(console.error);
+      
+        api.getInitialCards()
+          .then(cardsData => {
+            setCards(cardsData.data);
+          })
+          .catch(console.error);
+      }, []);
 
     function closeAllPopups() {
         setIsToolTipSuccessOpen(false);
@@ -95,26 +100,25 @@ function App() {
     function handleUpdateUser(data) {
         setIsAppLoading(true);
         api
-            .setUserInfo(data)
-            .then((updatedUserData) => {
-                setCurrentUser(updatedUserData);
-                closeAllPopups(); // Закрываем попап после успешного обновления данных пользователя
-            })
-            .catch((error) => {
-                console.error(error);
-            })
-            .finally(() => {
-                setIsAppLoading(false);
-            });
-
-    }
+          .setUserInfo(data)
+          .then(updatedUserData => {
+            setCurrentUser(updatedUserData.data); // Assuming the updated user data is within the 'data' property
+            closeAllPopups(); // Close the popup after successful user data update
+          })
+          .catch(error => {
+            console.error(error);
+          })
+          .finally(() => {
+            setIsAppLoading(false);
+          });
+      }
 
     function handleUpdateAvatar(avatar) {
         setIsAppLoading(true);
         api
             .updateAvatar(avatar)
             .then((updatedUser) => {
-                setCurrentUser(updatedUser);
+                setCurrentUser(updatedUser.data);
                 closeAllPopups(); // Закрываем попап после успешного обновления аватара пользователя
             })
             .catch((error) => {

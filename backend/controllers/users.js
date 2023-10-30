@@ -11,7 +11,7 @@ const SALT_ROUNDS = 10;
 module.exports.getUsers = async (req, res, next) => {
   try {
     const users = await User.find();
-    res.status(200).send({ users });
+    res.status(200).send({ data: users });
   } catch (error) {
     next(error);
   }
@@ -23,7 +23,7 @@ const findByIdResponse = async (res, next, id) => {
     if (!user) {
       throw new NotFoundError('Пользователь не найден');
     }
-    return res.status(200).send(user);
+    return res.status(200).send({ data: user });
   } catch (error) {
     if (error.name === 'ValidationError') {
       return next(new BadRequestError('Invalid data'));
@@ -87,7 +87,7 @@ module.exports.login = async (req, res, next) => {
       throw new UnauthorizedError('Неправильная почта или пароль');
     }
     const token = generateToken({ id: user._id });
-    res.cookie('mestoToken', token, { maxAge: 7 * 24 * 60 * 60 * 1000, httpOnly: true, sameSite: true });
+    res.cookie('jwt', token, { maxAge: 7 * 24 * 60 * 60 * 1000, httpOnly: true, sameSite: true });
     return res.status(200).send({ token });
   } catch (error) {
     return next(error);
