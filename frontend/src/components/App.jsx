@@ -39,13 +39,13 @@ function App() {
     useEffect(() => {
         api.getUserInfo()
           .then(userData => {
-            setCurrentUser(userData.data);
+            setCurrentUser(userData);
           })
           .catch(console.error);
 
         api.getInitialCards()
           .then(cardsData => {
-            setCards(cardsData.data);
+            setCards(cardsData);
           })
           .catch(console.error);
       }, []);
