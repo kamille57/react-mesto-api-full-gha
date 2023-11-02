@@ -1,6 +1,6 @@
 class Auth {
   constructor() {
-    this.baseUrl = 'http://localhost:3000';
+    this.baseUrl = 'https://api.kamille57.nomoredomainsrocks.ru';
   }
 
   _checkResponse(res) {

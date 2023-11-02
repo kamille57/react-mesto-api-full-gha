@@ -1,6 +1,6 @@
 class Api {
   constructor() {
-    this.baseUrl = 'http://localhost:3000';
+    this.baseUrl = 'https://api.kamille57.nomoredomainsrocks.ru';
     this.headers = {
       'Content-Type': 'application/json'
     };
