@@ -9,7 +9,7 @@
 
 ## Ссылки на проект
 
-IP-адрес 62.84.112.69
+IP 62.84.112.69
 
 Frontend https://kamille57.nomoredomainsrocks.ru
 

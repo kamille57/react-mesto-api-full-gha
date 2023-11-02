@@ -39,7 +39,6 @@ function App() {
     useEffect(() => {
         api.getUserInfo()
           .then(userData => {
-            console.log(userData);
             setCurrentUser(userData);
           })
           .catch(console.error);
