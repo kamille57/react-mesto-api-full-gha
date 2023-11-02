@@ -20,7 +20,7 @@ mongoose.connect('mongodb://localhost:27017/mestodb', {
   useUnifiedTopology: true,
 });
 
-app.use(cors({ origin: ['http://localhost:3000', 'http://localhost:3001'], credentials: true }));
+app.use(cors({ origin: ['http://localhost:3000', 'http://localhost:3001', 'kamille57.nomoredomainsrocks.ru', 'api.kamille57.nomoredomainsrocks.ru'], credentials: true }));
 app.use(requestLogger);
 app.use(router);
 app.use(errorLogger);

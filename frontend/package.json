@@ -9,8 +9,7 @@
     "start": "vite",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "deploy": "npm run build && scp -r ./dist/* kamille_57@62.84.112.69:/home/kamille_57/frontend"
   },
   "dependencies": {
     "gh-pages": "^6.0.0",
