@@ -35,13 +35,13 @@ class Api {
     });
   }
 
-  updateAvatar(avatar) {
+  updateAvatar(data) {
     return this._request(`${this.baseUrl}/users/me/avatar`, {
       method: 'PATCH',
       credentials: 'include',
       headers: this.headers,
       body: JSON.stringify({
-        avatar: avatar
+        avatar: data.avatar
       })
     });
   }
