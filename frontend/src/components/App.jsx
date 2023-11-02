@@ -39,13 +39,13 @@ function App() {
     useEffect(() => {
         api.getUserInfo()
           .then(userData => {
-            setCurrentUser(userData.data);
+            setCurrentUser(userData);
           })
           .catch(console.error);
       
         api.getInitialCards()
           .then(cardsData => {
-            setCards(cardsData.data);
+            setCards(cardsData);
           })
           .catch(console.error);
       }, []);
@@ -102,7 +102,7 @@ function App() {
         api
           .setUserInfo(data)
           .then(updatedUserData => {
-            setCurrentUser(updatedUserData.data); // Assuming the updated user data is within the 'data' property
+            setCurrentUser(updatedUserData); // Assuming the updated user data is within the 'data' property
             closeAllPopups(); // Close the popup after successful user data update
           })
           .catch(error => {
@@ -118,7 +118,7 @@ function App() {
         api
             .updateAvatar(avatar)
             .then((updatedUser) => {
-                setCurrentUser(updatedUser.data);
+                setCurrentUser(updatedUser);
                 closeAllPopups(); // Закрываем попап после успешного обновления аватара пользователя
             })
             .catch((error) => {
