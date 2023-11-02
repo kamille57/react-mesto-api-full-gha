@@ -13,8 +13,8 @@ class Api {
     return Promise.reject(`Ошибка: ${res.status}`);
   }
 
-  _request(url, options) {
-    return fetch(url, options)
+  _request(url) {
+    return fetch(url)
       .then(this._checkResponse);
   }
 
