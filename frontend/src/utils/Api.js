@@ -1,9 +1,7 @@
 class Api {
   constructor() {
-    this.baseUrl = 'http://localhost:3000';
-    // const token = localStorage.getItem('jwt');
+    this.baseUrl = 'https://api.kamille57.nomoredomainsrocks.ru';
     this.headers = {
-      // "Authorization": `Bearer ${token}`,
       'Content-Type': 'application/json'
     };
   }
