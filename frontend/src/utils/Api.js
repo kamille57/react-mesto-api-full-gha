@@ -1,6 +1,6 @@
 class Api {
   constructor() {
-    this.baseUrl = 'https://api.kamille57.nomoredomainsrocks.ru';
+    this.baseUrl = 'http://localhost:3000';
     this.headers = {
       'Content-Type': 'application/json'
     };
@@ -13,8 +13,8 @@ class Api {
     return Promise.reject(`Ошибка: ${res.status}`);
   }
 
-  _request(url) {
-    return fetch(url)
+  _request(url, options) {
+    return fetch(url, options)
       .then(this._checkResponse);
   }
 

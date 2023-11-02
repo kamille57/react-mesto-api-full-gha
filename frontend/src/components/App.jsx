@@ -8,13 +8,13 @@ import Footer from "./Footer";
 import ImagePopup from "./ImagePopup";
 import CurrentUserContext from "../contexts/CurrentUserContext";
 import Api from "../utils/Api";
-import Auth from "../utils/Auth"
 import EditProfilePopup from "./EditProfilePopup";
 import EditAvatarPopup from "./EditAvatarPopup";
 import AddPlacePopup from "./AddPlacePopup";
 import ProtectedRoute from "./ProtectedRoute";
 import ToolTipSuccess from "./ToolTipSuccess";
 import ToolTipFail from "./ToolTipFail";
+import Auth from '../utils/Auth';
 
 function App() {
     const [loggedIn, setLoggedIn] = useState(false);
@@ -39,6 +39,7 @@ function App() {
     useEffect(() => {
         api.getUserInfo()
           .then(userData => {
+            console.log(userData);
             setCurrentUser(userData);
           })
           .catch(console.error);
@@ -100,18 +101,19 @@ function App() {
     function handleUpdateUser(data) {
         setIsAppLoading(true);
         api
-          .setUserInfo(data)
-          .then(updatedUserData => {
-            setCurrentUser(updatedUserData); // Assuming the updated user data is within the 'data' property
-            closeAllPopups(); // Close the popup after successful user data update
-          })
-          .catch(error => {
-            console.error(error);
-          })
-          .finally(() => {
-            setIsAppLoading(false);
-          });
-      }
+            .setUserInfo(data)
+            .then((updatedUserData) => {
+                setCurrentUser(updatedUserData);
+                closeAllPopups();
+            })
+            .catch((error) => {
+                console.error(error);
+            })
+            .finally(() => {
+                setIsAppLoading(false);
+            });
+
+    }
 
     function handleUpdateAvatar(avatar) {
         setIsAppLoading(true);
@@ -154,7 +156,8 @@ function App() {
     }
 
     function checkContent() {
-        const token = localStorage.getItem('mestoToken');
+        const token = localStorage.getItem('jwt');
+        console.log(token);
         if (token) {
             auth.checkToken(token)
                 .then((res) => {
@@ -163,16 +166,16 @@ function App() {
                     navigate("/");
                 })
                 .catch(err => console.log(err));
-                localStorage.removeItem('mestoToken');
         }
     }
 
     function handleLogin(email, password) {
         auth.authorize(email, password)
             .then(res => {
-                localStorage.setItem('mestoToken', res.token);
-                navigate("/");
+                localStorage.setItem('jwt', res.token);
+                navigate("/")
                 checkContent();
+
             })
             .catch(err => {
                 onError();
@@ -184,8 +187,9 @@ function App() {
         auth.register(email, password)
             .then(() => {
                 console.log({ email });
+
                 navigate("/sign-in");
-                onRegister()
+                onRegister();
             })
             .catch(err => {
                 onError();

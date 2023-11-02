@@ -1,6 +1,6 @@
 class Auth {
   constructor() {
-    this.baseUrl = 'https://api.kamille57.nomoredomainsrocks.ru';
+    this.baseUrl = 'http://localhost:3000';
   }
 
   _checkResponse(res) {
@@ -42,7 +42,6 @@ class Auth {
       credentials: 'include',
       headers: {
         "Accept": "application/json",
-       // "Authorization": `Bearer ${token}`,
         "Content-Type": "application/json"
       }
     })
