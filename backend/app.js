@@ -1,4 +1,5 @@
 const express = require('express');
+const limiter = require('express-rate-limit');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const helmet = require('helmet');
@@ -27,7 +28,7 @@ mongoose.connect('mongodb://localhost:27017/mestodb', {
 app.use(express.json());
 app.use(cookieParser());
 app.use(requestLogger);
-
+app.use(limiter);
 app.get('/crash-test', () => {
   setTimeout(() => {
     throw new Error('Сервер сейчас упадёт');
