@@ -37,17 +37,13 @@ function App() {
     }, []);
 
     useEffect(() => { 
-        api.getUserInfo() 
-          .then(userData => { 
-            setCurrentUser(userData); 
-          }) 
-          .catch(console.error); 
-        api.getInitialCards() 
-          .then(cardsData => { 
-            setCards(cardsData); 
-          }) 
-          .catch(console.error); 
-      }, []); 
+        Promise.all([api.getUserInfo(), api.getInitialCards()]) 
+            .then(([userData, cardsData]) => { 
+                setCurrentUser(userData); 
+                setCards(cardsData); 
+            }) 
+            .catch(console.error); 
+    }, []); 
 
     function closeAllPopups() {
         setIsToolTipSuccessOpen(false);

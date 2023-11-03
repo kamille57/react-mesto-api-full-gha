@@ -28,7 +28,6 @@ mongoose.connect('mongodb://localhost:27017/mestodb', {
 app.use(express.json());
 app.use(cookieParser());
 app.use(requestLogger);
-app.use(limiter);
 app.get('/crash-test', () => {
   setTimeout(() => {
     throw new Error('Сервер сейчас упадёт');
@@ -44,7 +43,7 @@ app.use((req, res, next) => {
 });
 
 app.use(errorsHandler);
-
+app.use(limiter);
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
