@@ -7,7 +7,7 @@ function Header({ email }) {
   const navigate = useNavigate();
 
   function handleExit() {
-    localStorage.removeItem('token');
+    localStorage.removeItem('jwt');
     navigate('/sign-in');
   }
 

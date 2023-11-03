@@ -36,14 +36,14 @@ function App() {
         checkContent();
     }, []);
 
-    useEffect(() => { 
-        Promise.all([api.getUserInfo(), api.getInitialCards()]) 
-            .then(([userData, cardsData]) => { 
-                setCurrentUser(userData); 
-                setCards(cardsData); 
-            }) 
-            .catch(console.error); 
-    }, []); 
+    useEffect(() => {
+        Promise.all([api.getUserInfo(), api.getInitialCards()])
+            .then(([userData, cardsData]) => {
+                setCurrentUser(userData);
+                setCards(cardsData);
+            })
+            .catch(console.error);
+    }, []);
 
     function closeAllPopups() {
         setIsToolTipSuccessOpen(false);
