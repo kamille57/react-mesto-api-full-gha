@@ -25,7 +25,7 @@ function App() {
     const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = useState(false);
     const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = useState(false);
     const [selectedCard, setSelectedCard] = useState({ name: "", link: "" });
-    const [currentUser, setCurrentUser] = useState({});
+    const [currentUser, setCurrentUser] = useState(null);
     const [cards, setCards] = useState([]);
     const [isAppLoading, setIsAppLoading] = useState(false);
     const api = new Api();
@@ -37,13 +37,15 @@ function App() {
     }, []);
 
     useEffect(() => {
-        Promise.all([api.getUserInfo(), api.getInitialCards()])
-            .then(([userData, cardsData]) => {
-                setCurrentUser(userData);
-                setCards(cardsData);
-            })
-            .catch(console.error);
-    }, []);
+        if (loggedIn) {
+            Promise.all([api.getUserInfo(), api.getInitialCards()])
+                .then(([user, card]) => {
+                    setCurrentUser(user);
+                    setCards(card);
+                })
+                .catch((err) => alert(err))
+        }
+    }, [loggedIn]);
 
     function closeAllPopups() {
         setIsToolTipSuccessOpen(false);
@@ -168,7 +170,6 @@ function App() {
                 localStorage.setItem('jwt', res.token);
                 navigate("/")
                 checkContent();
-
             })
             .catch(err => {
                 onError();
@@ -179,8 +180,6 @@ function App() {
     function handleRegister(email, password) {
         auth.register(email, password)
             .then(() => {
-                console.log({ email });
-
                 navigate("/sign-in");
                 onRegister();
             })
@@ -190,12 +189,18 @@ function App() {
             });
     }
 
+    function signOut() {
+        localStorage.removeItem('jwt');
+        setLoggedIn(false);
+    }
+
     return (
         <CurrentUserContext.Provider value={currentUser}>
             <div className="page">
                 <Header
                     loggedIn={loggedIn}
                     email={email}
+                    signOut={signOut}
                 />
                 <Routes>
                     <Route

@@ -4,17 +4,16 @@ import CurrentUserContext from "../contexts/CurrentUserContext";
 
 function Main({ cards, onEditProfile, onAddPlace, onEditAvatar, onCardClick, onCardLike, onCardDelete }) {
     const currentUser = useContext(CurrentUserContext);
-
     return (
         <main className="content">
             <section className="profile">
                 <div className="profile-info">
                     <img
                         className="profile-info__avatar"
-                        src={currentUser.avatar}
+                        src={currentUser ? currentUser.avatar : ''}
                         alt="Ваш аватар."
                     />
-                    <h1 className="profile-info__name">{currentUser.name}</h1>
+                    <h1 className="profile-info__name">{currentUser ? currentUser.name : ''}</h1>
                     <button
                         type="button"
                         aria-label="кнопка открытия попапа с информацией о профиле"
@@ -27,7 +26,7 @@ function Main({ cards, onEditProfile, onAddPlace, onEditAvatar, onCardClick, onC
                         className="profile-info__edit-avatar-button"
                         onClick={onEditAvatar}
                     ></button>
-                    <p className="profile-info__profession">{currentUser.about}</p>
+                    <p className="profile-info__profession">{currentUser ? currentUser.about : ''}</p>
                     <button
                         type="button"
                         aria-label="кнопка открытия попапа для добавления карточек"
